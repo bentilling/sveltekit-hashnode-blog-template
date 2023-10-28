@@ -1,2 +1,1 @@
 # sveltekit-hashnode-blog-template
- 
