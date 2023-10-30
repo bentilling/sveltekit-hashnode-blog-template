@@ -4,15 +4,13 @@
 	export let data: PageData;
 
 	$: ({ Post } = data);
-
-	$: console.log($Post.data);
 </script>
 
-<article class="prose bg-white px-6 max-w-screen-lg">
-	{#if $Post.data}
-    <h1 class="text-4xl font-bold pt-10">{$Post.data.publication?.post?.title}</h1>
+<article class="bg-white px-6 max-w-screen-lg">
+	{#if $Post.data?.publication?.post}
+		<h1 class="text-4xl font-bold pt-10">{$Post.data.publication?.post?.title}</h1>
 
-		<div class="">
+		<div class="prose prose-h2:underline">
 			{@html $Post.data.publication?.post?.content.html}
 		</div>
 	{/if}

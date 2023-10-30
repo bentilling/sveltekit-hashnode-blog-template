@@ -1,4 +1,4 @@
-query Publication {
+query AllPosts {
 	publication(host: "engineering.hashnode.com") {
 		isTeam
 		title
@@ -8,7 +8,6 @@ query Publication {
 					title
 					brief
 					slug
-					url
 					coverImage {
 						url
 					}

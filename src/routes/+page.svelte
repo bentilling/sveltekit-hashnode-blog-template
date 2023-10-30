@@ -1,17 +1,23 @@
 <script lang="ts">
-	import PostPreview from '$lib/components/PostPreview.svelte';
-	import type { PageData } from './$houdini';
+	import type { PageData } from '$houdini/types/src/routes/$houdini';
 
 	export let data: PageData;
 
-	$: ({ Publication } = data);
+	$: ({ AllPosts } = data);
 </script>
 
-
-{#if $Publication.data}
+{#if $AllPosts?.data?.publication?.posts}
 	<ul>
-		{#each $Publication.data?.publication?.posts?.edges as post}
-			<PostPreview coverImageURL={post.node.coverImage.url} title={post.node.title} brief={post.node.brief} slug={post.node.slug}/>
+		{#each $AllPosts.data?.publication?.posts?.edges as { node: { title, slug, brief, coverImage } }}
+			<a href={`/posts/${slug}`}>
+				<div class="p-6 bg-white rounded shadow-sm my-4">
+					<h2 class="text-xl pb-5 font-semibold">{title}</h2>
+					<div class="flex">
+						<img class="rounded-lg shadow-lg w-1/2" src={coverImage?.url} alt={title} />
+						<p class="m-4 w-1/2">{brief}</p>
+					</div>
+				</div>
+			</a>
 		{/each}
 	</ul>
 {/if}
