@@ -1,0 +1,11 @@
+query Post($slug: String!) {
+	publication(host: "engineering.hashnode.com") {
+		post(slug: $slug) {
+			title
+			content {
+				markdown
+				html
+			}
+		}
+	}
+}

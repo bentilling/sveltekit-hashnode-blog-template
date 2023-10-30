@@ -1,0 +1,18 @@
+query AllPosts {
+	publication(host: "engineering.hashnode.com") {
+		isTeam
+		title
+		posts(first: 10) {
+			edges {
+				node {
+					title
+					brief
+					slug
+					coverImage {
+						url
+					}
+				}
+			}
+		}
+	}
+}
