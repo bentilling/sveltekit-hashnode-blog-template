@@ -8,7 +8,7 @@
 
 {#if $AllPosts?.data?.publication?.posts}
 	<ul>
-		{#each $AllPosts.data?.publication?.posts?.edges as { node: { title, slug, brief, coverImage } }}
+		{#each $AllPosts.data.publication.posts.edges as { node: { title, slug, brief, coverImage } }}
 			<a href={`/posts/${slug}`}>
 				<div class="p-6 bg-white rounded shadow-sm my-4">
 					<h2 class="text-xl pb-5 font-semibold">{title}</h2>
